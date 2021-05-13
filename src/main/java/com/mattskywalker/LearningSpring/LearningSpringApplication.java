@@ -17,7 +17,7 @@ public class LearningSpringApplication {
 			System.out.println("Cliente: " + cliente);
 		});
 
-		//System.out.println("Cliente encontrado: " + clienteDao.pesquisarCliente("1").getNome());
+		//clienteDao.deletar(new Cliente("5"));
 
 
 		SpringApplication.run(LearningSpringApplication.class, args);

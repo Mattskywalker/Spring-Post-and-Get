@@ -10,5 +10,7 @@ public interface ClienteDaoInterface {
 
     public List<Cliente> Listar();
 
-    public Cliente pesquisarCliente(String id);
+    public Cliente pesquisarCliente(Cliente cliente);
+
+    public void deletar(Cliente cliente);
 }

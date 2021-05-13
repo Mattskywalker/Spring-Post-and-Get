@@ -48,14 +48,14 @@ public class ClienteDao implements ClienteDaoInterface{
         return null;
     }
 
-    public Cliente pesquisarCliente(String id){
+    public Cliente pesquisarCliente(Cliente cliente){
         EntityManager em = JPAUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         Cliente a = null;
 
         try{
             tx.begin();
-            a = em.find(Cliente.class,id);
+            a = em.find(Cliente.class,cliente.getCpf());
             tx.commit();
         }catch (Exception e){
             e.printStackTrace();
@@ -65,6 +65,28 @@ public class ClienteDao implements ClienteDaoInterface{
         }
         return a;
 
+    }
+
+    public void deletar(Cliente cliente){
+
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try{
+
+            Cliente a = pesquisarCliente(cliente);
+            tx.begin();
+            a = em.merge(a);
+            em.remove(a);
+            tx.commit();
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }finally {
+            em.close();
+        }
     }
 
 }

@@ -16,6 +16,10 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String cpf) {
+        this.cpf = cpf;
+    }
+
     public Cliente(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
