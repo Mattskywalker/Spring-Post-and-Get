@@ -22,8 +22,8 @@ public class ClientesController {
     }
 
     @GetMapping(value = "/cliente/{id}")
-    public Cliente pesquisarCliente(@PathVariable(value  = "id") String id){
-        return clienteDao.pesquisarCliente(id);
+    private Cliente pesquisarCliente(@PathVariable(value  = "id") String id){
+        return clienteDao.pesquisarCliente(new Cliente(id));
     }
 
     @PostMapping(value = "/cadastrar")
@@ -31,5 +31,8 @@ public class ClientesController {
         clienteDao.Cadastrar(cliente);
 
     }
-
+    @DeleteMapping(value = "/deletar/{id}")
+    private void deletarCliente(@PathVariable(value = "id") String id){
+        clienteDao.deletar(new Cliente(id));
+    }
 }
